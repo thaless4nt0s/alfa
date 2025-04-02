@@ -41,7 +41,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return view('auth.login');
+        return redirect()->route('login')->with('success', 'Logged out successfully!');
     }
 
     // Registro
@@ -52,12 +52,17 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $data = $request->validate($this->user->rules());
+        try {
+            $data = $request->validate($this->user->rules());
 
-        $data['password'] = bcrypt($data['password']);
-        $user = $this->user->create($data);
+            $data['password'] = bcrypt($data['password']);
+            $user = $this->user->create($data);
 
-        Auth::login($user);
-        return redirect('/dashboard');
+            Auth::login($user);
+            return redirect('/app/dashboard')->with('success', 'Usar has been saved successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error has ocurred: ' . $e->getMessage());
+        }
     }
+
 }

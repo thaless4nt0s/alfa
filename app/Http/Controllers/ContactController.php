@@ -21,14 +21,16 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate(
-            $this->contact->rules()
-        );
+        $validated = $request->validate($this->contact->rules());
 
-        Contact::create($validated);
-
-        return redirect()->route('dashboard')->with('success', 'Contact has been created!');
+        try {
+            Contact::create($validated);
+            return redirect()->route('dashboard')->with('success', 'Contact has been created successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while creating the contact.');
+        }
     }
+
 
     public function index()
     {
@@ -45,24 +47,28 @@ class ContactController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validated = $request->validate(
-            $this->contact->rules()
-        );
+        $validated = $request->validate($this->contact->rules());
 
-        $contact = $this->contact->findOrFail($id);
-        $contact->update($validated);
-
-        return redirect()->route('dashboard')->with('success', 'Contact has been updated!');
+        try {
+            $contact = Contact::findOrFail($id);
+            $contact->update($validated);
+            return redirect()->route('dashboard')->with('success', 'Contact has been updated successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while updating the contact.');
+        }
     }
 
-    // Remover contato
     public function destroy($id)
     {
-        $contact = $this->contact->findOrFail($id);
-        $contact->delete();
-
-        return redirect()->route('dashboard')->with('success', 'Contact has been deleted!');
+        try {
+            $contact = Contact::findOrFail($id);
+            $contact->delete();
+            return redirect()->route('dashboard')->with('success', 'Contact has been deleted successfully!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occurred while deleting the contact.');
+        }
     }
+
 
     // Mostrar um contato em especifico
     public function show($id)
