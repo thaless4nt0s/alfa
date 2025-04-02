@@ -63,4 +63,12 @@ class ContactController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Contact has been deleted!');
     }
+
+    // Mostrar um contato em especifico
+    public function show($id)
+    {
+        $contact = $this->contact->findOrFail($id);
+        return view('contacts.show', compact('contact'));
+    }
+
 }
