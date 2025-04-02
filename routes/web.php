@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,9 @@ Route::prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
 });
 
-Route::prefix('app')->group(function () {
-    Route::get('/dashboard', [UserController::class, 'index'])->name('dashboard');
+Route::prefix('app')->middleware('auth')->group(function () {
+    // rota de contatos
+    Route::get('/dashboard', [ContactController::class, 'index'])->name('dashboard');
+    Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
+    Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
 });

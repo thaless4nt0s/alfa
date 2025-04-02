@@ -14,12 +14,6 @@
             <!-- Logo/Cabeçalho -->
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold text-blue-600">Alfasoft</h1>
-                <div class="mt-4 text-center">
-                    <p class="text-gray-600">
-                        <a href="{{ route('dashboard') }}" class="text-blue-600 hover:underline font-medium">Click here
-                            to check the Dashboard</a>
-                    </p>
-                </div>
             </div>
 
             <!-- Formulário de Cadastro (Componente Reutilizado) -->
