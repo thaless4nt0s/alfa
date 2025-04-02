@@ -16,6 +16,11 @@
             Create a new contact
         </button>
     </div>
+    <div>
+        <x-table :headers="['id', 'name', 'email', 'contact', 'actions']" :rows="$contacts"
+            tableTitle="Contact's Table" />
+    </div>
+
 </body>
 
 </html>
