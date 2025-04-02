@@ -18,6 +18,7 @@
                     <td class="py-3 px-4 text-gray-600">{{ $row->email }}</td>
                     <td class="py-3 px-4 text-gray-600">{{ $row->contact }}</td>
                     <td class="py-3 px-4 text-gray-600 flex gap-2 justify-center">
+                        <a href="{{ route('contacts.show', $row->id) }}" class="text-blue-500 hover:text-blue-700">👁️</a>
                         <a href="{{ route('contacts.edit', $row->id) }}" class="text-green-500 hover:text-green-700">✏️</a>
                         <form action="{{ route('contacts.destroy', $row->id) }}" method="POST"
                             onsubmit="return confirm('Tem certeza que deseja remover?')">
