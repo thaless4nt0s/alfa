@@ -36,4 +36,6 @@ Route::prefix('app')->middleware('auth')->group(function () {
     Route::get('/dashboard', [ContactController::class, 'index'])->name('dashboard');
     Route::get('/contacts/create', [ContactController::class, 'create'])->name('contacts.create');
     Route::post('/contacts', [ContactController::class, 'store'])->name('contacts.store');
+    Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
+    Route::put('/contacts/{id}', [ContactController::class, 'update'])->name('contacts.update');
 });
