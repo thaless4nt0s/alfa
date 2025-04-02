@@ -23,7 +23,6 @@
                 <x-input name="name" label="Full Name" autofocus type="text" required />
                 <x-input name="email" label="E-mail" type="email" required />
                 <x-input name="password" label="Password" type="password" required />
-                <x-input name="password_confirmation" label="Confirm Password" type="password" required />
                 <x-input name="contact" label="Contact" type="text" pattern="\d{9}" title="" maxlength="9"
                     oninput="this.value = this.value.replace(/[^0-9]/g, '')" required />
             </x-form>
