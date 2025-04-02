@@ -12,7 +12,7 @@
         </x-form>
         <div class="mt-4">
             <button type="button"
-                class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+                class="w-full bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 transition-colors"
                 onclick="window.location='{{ route('dashboard') }}'">
                 Back
             </button>
