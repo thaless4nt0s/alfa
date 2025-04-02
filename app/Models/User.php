@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'contact',
     ];
 
     /**
@@ -42,4 +43,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function rules()
+    {
+        return [
+            'name' => 'required|string|min:5',
+            'contact' => 'required|digits:9|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8'
+        ];
+    }
 }
