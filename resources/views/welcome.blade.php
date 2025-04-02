@@ -9,6 +9,7 @@
 </head>
 
 <body class="bg-gray-100">
+    <x-alerts></x-alerts>
     <div class="min-h-screen flex items-center justify-center p-4">
         <div class="w-full max-w-md">
             <!-- Logo/Cabeçalho -->

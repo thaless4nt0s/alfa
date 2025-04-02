@@ -1,5 +1,3 @@
-@extends('layouts.app')
-
 @section('content')
     <x-form action="{{ route('register') }}" title="Crie sua Conta" method="POST">
         <x-input name="name" label="Nome Completo" />

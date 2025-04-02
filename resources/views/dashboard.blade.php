@@ -10,7 +10,14 @@
 
 
 <body class="bg-gray-100">
+    <x-alerts />
     <div class="flex items-center justify-between mb-4 p-4">
+        <form action="{{ route('logout') }}" method="POST" class="inline">
+            @csrf
+            <button type="submit" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+                Logout
+            </button>
+        </form>
         <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
             onclick="window.location='{{ route('contacts.create') }}'">
             Create a new contact

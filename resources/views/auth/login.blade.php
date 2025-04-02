@@ -4,6 +4,7 @@
 <x-head title="LOGIN"></x-head>
 
 <body class="bg-gray-100">
+    <x-alerts></x-alerts>
     <div class="min-h-screen flex items-center justify-center">
         <div class="bg-white p-8 rounded shadow-md w-96">
             <h1 class="text-2xl font-bold mb-6 text-center">Login</h1>
@@ -22,6 +23,13 @@
                     Send
                 </button>
             </form>
+            <div class="mt-4">
+                <button type="button"
+                    class="w-full bg-gray-500 text-white py-2 px-4 rounded hover:bg-gray-600 transition-colors"
+                    onclick="window.location='{{ url('/') }}'">
+                    Back
+                </button>
+            </div>
         </div>
     </div>
 </body>

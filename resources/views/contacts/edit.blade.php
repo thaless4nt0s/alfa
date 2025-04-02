@@ -1,5 +1,6 @@
 <html>
 <x-head title="Update Contact"></x-head>
+<x-alerts />
 <div class="min-h-screen flex items-center justify-center p-4">
     <x-form action="{{ route('contacts.update', $contact->id) }}" method="POST" title="Edit Contact"
         submitText="Update">

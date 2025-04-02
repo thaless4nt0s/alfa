@@ -2,6 +2,7 @@
 <x-head title="Include Contact"></x-head>
 
 <body class="bg-gray-100">
+    <x-alerts />
     <div class="min-h-screen flex flex-col items-center justify-center p-4">
         <x-form action="{{ route('contacts.store') }}" title="Include new contact" submitText="Include">
             <x-input name="name" label="Name" type="text" placeholder="Type your name" required />
