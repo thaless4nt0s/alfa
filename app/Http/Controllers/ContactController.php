@@ -47,16 +47,17 @@ class ContactController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validated = $request->validate($this->contact->rules());
-
         try {
             $contact = Contact::findOrFail($id);
+            $validated = $request->only(array_keys($contact->rules()));
+            $validated = $request->validate($contact->rules());
             $contact->update($validated);
-            return redirect()->route('dashboard')->with('success', 'Contact has been updated successfully!');
+            return redirect()->route('dashboard')->with('success', 'The contact has been updated successfully!');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'An error occurred while updating the contact.');
+            return redirect()->back()->with('error', 'An error occurred while updating the contact: ' . $e->getMessage());
         }
     }
+
 
     public function destroy($id)
     {
