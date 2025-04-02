@@ -20,7 +20,7 @@ class Contact extends Model
         return [
             'name' => 'required|string|min:6',
             'contact' => 'required|digits:9',
-            'email' => 'required|email|unique:contacts'
+            'email' => 'required|email|unique:contacts,email,' . $this->id
         ];
     }
 }
