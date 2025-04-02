@@ -54,4 +54,13 @@ class ContactController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Contact has been updated!');
     }
+
+    // Remover contato
+    public function destroy($id)
+    {
+        $contact = $this->contact->findOrFail($id);
+        $contact->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Contact has been deleted!');
+    }
 }
